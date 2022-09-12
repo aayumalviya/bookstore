@@ -1,0 +1,35 @@
+<%= render "style1" %>
+<p style="float: right; margin: 5px;"><%= link_to "Add books", new_user_book_path(current_user.id), class:"btn btn-dark btn-lg" %></p>
+
+	<% @user.books.each do |book| %>
+	<div class="card">
+		<span class="image">
+				<% if book.book_image.present? %>
+				<%= link_to book.book_pdf.url ,target: "blank" do %>
+					<%= image_tag(book.book_image.url,height:"150px", width:"250px") %><br> 
+				<% end %>
+			<% end %>
+		</span>
+		 <div class="card-body">
+		    <h4 class="card-title"><b><%= book.title %></b></h4>
+		</div>
+		<%= link_to new_book_share_path(book.id), class: "btn btn-dark btn-sm", data: { "bs-target": "#staticBackdrop", "bs-toggle": "modal" } , remote: true do %>
+			Share <b id="share_count_<%= book.id %>"><%= book.shares.count %></b>
+		<% end %>
+
+		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		      	<div id="render_share_form"> Loading... </div>
+		      </div>
+		    </div>
+		  </div>
+		</div>	
+		</div>
+	</div>
+<% end %>

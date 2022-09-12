@@ -1,0 +1,36 @@
+
+<style type="text/css">
+	.container{
+		width: 400px;
+	}
+</style>
+
+<div class="container">
+<h3>EditBook</h3>
+<br>	
+<%= form_with model: [ @user , @book ] do |form| %>
+
+	<div class="mb-3">
+	  <%=form.label :Title , class:"form-label" %>
+	  <%= form.text_field :title ,class:"form-control" %>
+	</div>
+
+	<div class="mb-3">
+  		<%=form.label :book_pdf , class:"form-label" %>
+		<%= form.file_field :book_pdf ,class:"form-control"%>
+			<% @book.errors.full_messages_for(:book_pdf).each do |message| %>
+			<span>message</span>
+		<% end %>
+	</div>
+
+	<div class="mb-3">
+  		<%=form.label :book_image , class:"form-label" %>
+		<%= form.file_field :book_image ,class:"form-control"%>
+	</div>
+	
+	<div>
+		<%= form.submit %>
+	</div>
+<% end %>
+</div>
+</div>

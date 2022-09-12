@@ -1,0 +1,20 @@
+<%= render "books/style1" %>
+</style>
+<% @books.each do |book| %>
+	<div class="card">
+		<span class="image">
+			<% if book.book_image.present? %>
+				<%= link_to book.book_pdf.url ,target: "blank" do %>
+					<%= image_tag(book.book_image.url,height:"160px", width:"250px") %><br> 
+				<% end %>
+			<% end %>
+		</span>
+		
+		<div class="card-body">
+		    <div class="card-title">
+			    <h4><%= book.title %></h4>
+				<h6 style="font-size: 14px;"> Shared_by: <%= book.user.name%></h6>
+			</div>
+		</div>
+	</div>
+<% end %>

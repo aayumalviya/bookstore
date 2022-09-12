@@ -1,0 +1,28 @@
+<style>
+* {box-sizing: border-box;}
+
+body { 
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+<%= render "layouts/style" %>
+</style>
+<div class="header">
+		<% if user_signed_in? %>
+			<%= image_tag 'download.jpeg' , height:"60px" , width:"60px;" %>
+			<b style="color:white;"><%= current_user.name %></b>
+  <div class="header-right">
+			<%= link_to "Dashboard" , root_path %>
+			<%= link_to "My Books" , user_books_path(current_user.id) %>
+			<%=  link_to "Log out" , destroy_user_session_path, method: :delete %>
+		<% else %>
+  		 	<a href="users/sign_in">LogIn</a>
+   		<% end %>
+	</div>
+</div>
+
+ 
+	
+
+

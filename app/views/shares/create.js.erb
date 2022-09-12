@@ -1,0 +1,3 @@
+	<%= ajax_flash('#top-div') %>	
+$('#share_count_<%= @book.id %>').html(<%= @book.shares.count %>) 
+$('#staticBackdrop').modal('hide');

@@ -1,0 +1,11 @@
+<%= form_for([ @book , @book.shares.build ] , remote: true ) do |form| %>
+	<div class="modal-body",style="height:100px;">
+		<div>
+			<%= form.label :Name %>
+			<%= form.select :user_id , User.pluck(:name , :id) %>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<%= form.submit "Share" , class:"btn btn-dark btn-sm" %>
+	</div>
+<% end %> 
